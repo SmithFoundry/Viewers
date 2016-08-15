@@ -47,7 +47,7 @@ Template.studyTimepointStudy.helpers({
         // Responsively styles the Modality Acronyms for studies
         // with more than one modality
         const instance = Template.instance();
-        const modalities = instance.data.study.modalities;
+        const modalities = instance.data.study.modalities || 'UN';
         const numModalities = modalities.split(/\\/g).length;
 
         if (numModalities === 1) {

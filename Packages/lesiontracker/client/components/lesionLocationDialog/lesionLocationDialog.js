@@ -290,7 +290,9 @@ Template.lesionLocationDialog.events({
         var measurementData = Template.lesionLocationDialog.measurementData;
         var dialog = Template.lesionLocationDialog.dialog;
 
-        convertToNonTarget(measurementData);
+        const instance = Template.instance()
+        const measurementApi = instance.data.measurementApi;
+        convertToNonTarget(measurementApi, measurementData);
 
         closeHandler(dialog);
     },

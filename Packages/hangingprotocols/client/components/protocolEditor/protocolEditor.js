@@ -169,7 +169,7 @@ Template.protocolEditor.events({
         protocol.name = 'New (created ' + moment().format('h:mm:ss a') + ')';
 
         // Change the Protocol ID from the default value
-        protocol.id = uuid.new();
+        protocol.id = Random.id();
 
         // Insert the Protocol into the HangingProtocols Collection
         HangingProtocols.insert(protocol);
@@ -332,7 +332,7 @@ Template.protocolEditor.events({
             delete selectedProtocol._id;
 
             // Create a new ID for the protocol
-            selectedProtocol.id = uuid.new();
+            selectedProtocol.id = Random.id();
 
             // Update the name with the entered text
             selectedProtocol.name = value;

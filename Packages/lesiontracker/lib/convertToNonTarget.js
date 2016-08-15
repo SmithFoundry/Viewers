@@ -1,4 +1,4 @@
-convertToNonTarget = function(measurementData) {
+convertToNonTarget = function(measurementApi, measurementData) {
     if (measurementData.isTarget === false) {
         return;
     }

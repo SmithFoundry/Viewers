@@ -3,7 +3,8 @@
         {{>lesionTableHeaderRow id="target"
                                 measurements=targets
                                 currentTimepointId=currentTimepointId
-                                timepointApi=timepointApi}}
+                                timepointApi=timepointApi
+                                measurementApi=measurementApi}}
         {{#each target in targets}}
             {{>lesionTableRow (clone this rowItem=target)}}
         {{/each}}
@@ -11,7 +12,8 @@
         {{>lesionTableHeaderRow id="nonTarget"
                                 measurements=nonTargets
                                 currentTimepointId=currentTimepointId
-                                timepointApi=timepointApi}}
+                                timepointApi=timepointApi
+                                measurementApi=measurementApi}}
         {{#each nonTarget in nonTargets}}
             {{>lesionTableRow (clone this rowItem=nonTarget)}}
         {{/each}}
@@ -20,7 +22,8 @@
             {{>lesionTableHeaderRow id="newLesion"
                                     measurements=newLesions
                                     currentTimepointId=currentTimepointId
-                                    timepointApi=timepointApi}}
+                                    timepointApi=timepointApi
+                                    measurementApi=measurementApi}}
             {{#each newLesion in newLesions}}
                 {{>lesionTableRow (clone this rowItem=newLesion)}}
             {{/each}}

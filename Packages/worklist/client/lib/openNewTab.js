@@ -11,7 +11,7 @@ openNewTab = function(studyInstanceUid, title) {
     // Generate a unique ID to represent this tab
     // We can't just use the Mongo entry ID because
     // then it will change after hot-reloading.
-    var contentid = uuid.new();
+    var contentid = Random.id();
 
     // Update the ViewerData global object
     ViewerData[contentid] = {

@@ -1,18 +1,19 @@
-import { MeasurementApi } from 'meteor/lesiontracker/client/api/measurement';
-
 Template.lesionTableView.helpers({
     targets() {
         const withPriors = true;
-        return MeasurementApi.targets(withPriors);
+        const instance = Template.instance();
+        return instance.data.measurementApi.targets(withPriors);
     },
 
     nonTargets() {
         const withPriors = true;
-        return MeasurementApi.nonTargets(withPriors);
+        const instance = Template.instance();
+        return instance.data.measurementApi.nonTargets(withPriors);
     },
 
     newLesions() {
-        return MeasurementApi.newLesions();
+        const instance = Template.instance();
+        return instance.data.measurementApi.newLesions();
     },
 
     isFollowup() {

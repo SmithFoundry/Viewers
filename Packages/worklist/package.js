@@ -13,7 +13,7 @@ Package.onUse(function (api) {
     api.use('stylus');
     api.use('http');
     api.use('practicalmeteor:loglevel');
-    api.use('rwatts:uuid');
+    api.use('random');
     api.use('silentcicero:jszip');
     api.use('aldeed:simple-schema');
 
@@ -40,7 +40,6 @@ Package.onUse(function (api) {
     api.addFiles('log.js');
 
     api.addFiles('both/collections.js', [ 'client', 'server' ]);
-    api.addFiles('both/schema.js', [ 'client', 'server' ]);
     
     // Components
     api.addFiles('client/components/worklist.html', 'client');

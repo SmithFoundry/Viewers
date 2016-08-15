@@ -68,3 +68,4 @@ standard-minifier-js@1.2.0
 johdirr:meteor-git-rev
 u2622:persistent-session
 shell-server
+aldeed:collection2

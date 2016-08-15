@@ -4,7 +4,7 @@ var responseTypes = {
     unTool: 'UN'
 };
 
-convertNonTarget = function(measurementData, newTooltype) {
+convertNonTarget = function(measurementApi, measurementData, newTooltype) {
     if (measurementData.toolType !== 'nonTarget') {
         return;
     }
@@ -23,7 +23,7 @@ convertNonTarget = function(measurementData, newTooltype) {
     // Next, update the measurementData and add it to the new tool type
     var newMeasurement = {
         id: 'notready',
-        lesionNumber: LesionManager.getNewLesionNumber(measurementData.timepointId, false),
+        lesionNumber: measurementApi.getNewLesionNumber(measurementData.timepointId, false),
         visible: true,
         active: true,
         imageId: measurementData.imageId,
@@ -41,7 +41,7 @@ convertNonTarget = function(measurementData, newTooltype) {
     }
 
     // Adds lesion data to timepoints array
-    LesionManager.updateLesionData(newMeasurement);
+    measurementApi.updateLesionData(newMeasurement);
 
     // Set the new Measurement to have the same location as the old one
     if (measurement.location && measurement.locationId) {

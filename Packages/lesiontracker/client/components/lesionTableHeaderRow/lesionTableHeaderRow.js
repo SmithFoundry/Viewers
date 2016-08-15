@@ -1,5 +1,3 @@
-import { MeasurementApi } from 'meteor/lesiontracker/client/api/measurement';
-
 const toolTypesById = {
     target: 'bidirectional',
     nonTarget: 'nonTarget',
@@ -74,11 +72,12 @@ Template.lesionTableHeaderRow.helpers({
     },
 
     anyUnmarkedLesionsLeft() {
-        const id = Template.instance().data.id;
+        const instance = Template.instance();
+        const id = instance.data.id;
         if (id === 'target') {
-            return MeasurementApi.unmarkedTargets().length;
+            return instance.data.measurementApi.unmarkedTargets().length;
         } else if (id === 'nonTarget') {
-            return MeasurementApi.unmarkedNonTargets().length;
+            return instance.data.measurementApi.unmarkedNonTargets().length;
         }
 
         // Keep the 'Add' button for the New Lesions header row

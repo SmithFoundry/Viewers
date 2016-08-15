@@ -84,7 +84,7 @@ function updateLesionData(lesionData) {
             lesionNumber: lesionData.lesionNumber,
             isTarget: lesionData.isTarget,
             patientId: lesionData.patientId,
-            id: lesionData.id,
+            id: lesionData.id || Random.id(),
             toolType: lesionData.toolType
         };
         if (lesionData.toolType) {

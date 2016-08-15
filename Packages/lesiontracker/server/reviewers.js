@@ -29,7 +29,7 @@ Meteor.methods({
                     return reviewer.userId === user._id;
                 })[0];
 
-                // Return if user eixistes for related timepoint
+                // Return if user exists for related timepoint
                 if (isReviewerFound) {
                     return;
                 }

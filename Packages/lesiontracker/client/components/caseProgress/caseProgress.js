@@ -1,5 +1,3 @@
-import { MeasurementApi } from 'meteor/lesiontracker/client/api/measurement';
-
 Template.caseProgress.onCreated(() => {
     const instance = Template.instance();
 
@@ -26,7 +24,7 @@ Template.caseProgress.onCreated(() => {
     // follow-up. Note that this is done outside of the reactive function
     // below so that new lesions don't change the initial target count.
     const withPriors = true;
-    const totalTargets = MeasurementApi.targets(withPriors).length;
+    const totalTargets = instance.data.measurementApi.targets(withPriors).length;
 
     // If we're currently reviewing a Baseline timepoint, don't do any
     // progress measurement.
@@ -38,7 +36,7 @@ Template.caseProgress.onCreated(() => {
         instance.autorun(() => {
             // Obtain the number of Measurements for which the current Timepoint has
             // no Measurement data
-            const numRemainingMeasurements = MeasurementApi.unmarked().length;
+            const numRemainingMeasurements = instance.data.measurementApi.unmarked().length;
 
             // Update the Case Progress text with the remaining measurement count
             instance.progressText.set(numRemainingMeasurements);
@@ -75,5 +73,9 @@ Template.caseProgress.events({
     'click .js-finish-case'() {
         console.log('Case Finished!');
         switchToTab('worklistTab');
+        instance.data.measurementApi.saveMeasurements();
+
+        const current = instance.data.timepointApi.current();
+        console.log('Locking Timepoint!');
     }
 });

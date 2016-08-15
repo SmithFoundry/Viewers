@@ -11,7 +11,7 @@ Package.onUse(function(api) {
     api.use('standard-app-packages');
     api.use('jquery');
     api.use('stylus');
-    api.use('rwatts:uuid');
+    api.use('random');
     api.use('practicalmeteor:loglevel');
     api.use('templating');
     api.use('natestrauser:select2@4.0.1', 'client');

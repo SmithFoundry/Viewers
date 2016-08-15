@@ -1,17 +1,25 @@
 class TimepointApi {
 
-    constructor() {
+    constructor(currentTimepointId) {
         // Run this computation every time the timepoints are changed
         Tracker.autorun(() => {
             // Get all the timepoints and store it
-            this.timepoints = new Mongo.Collection(null);
-            const timepoints = Timepoints.find({}, {
-                sort: {
-                    latestDate: -1
-                }
-            }).fetch();
-            _.each(timepoints, timepoint => this.timepoints.insert(timepoint));
+            this.updateTimepoints();
         });
+
+        this.currentTimepointId = currentTimepointId;
+        this.updateTimepoints();
+    }
+
+    updateTimepoints() {
+        this.timepoints = new Mongo.Collection(null);
+        const timepoints = Timepoints.find({}, {
+            sort: {
+                latestDate: -1
+            }
+        });
+        
+        timepoints.forEach(timepoint => this.timepoints.insert(timepoint));
     }
 
     // Return all timepoints
@@ -27,6 +35,14 @@ class TimepointApi {
     }
 
     // Return the prior timepoint
+    lock() {
+        this.timepoints.update(current._id, {
+            $set: {
+                locked: true
+            }
+        });
+    }
+
     prior() {
         const current = this.current();
         if (!current) {

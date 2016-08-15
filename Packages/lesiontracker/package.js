@@ -12,17 +12,16 @@ Package.onUse(function(api) {
     api.use('jquery');
     api.use('stylus');
     api.use('design');
+    api.use('random');
 
     api.use('validatejs');
 
     // Schema for Data Models
     api.use('aldeed:simple-schema');
+    api.use('aldeed:collection2');
 
     // Control over logging
     api.use('practicalmeteor:loglevel');
-
-    // Unique IDs
-    api.use('rwatts:uuid');
 
     // Template overriding
     api.use('aldeed:template-extension@4.0.0');
@@ -35,6 +34,10 @@ Package.onUse(function(api) {
     api.addFiles('log.js', [ 'client', 'server' ]);
 
     // Schema
+    api.addFiles('both/schema/timepoints.js', [ 'client', 'server' ]);
+    api.addFiles('both/schema/studies.js', [ 'client', 'server' ]);
+    api.addFiles('both/schema/measurements.js', [ 'client', 'server' ]);
+    api.addFiles('both/schema/imageMeasurements.js', [ 'client', 'server' ]);
     api.addFiles('both/schema/additionalFindings.js', [ 'client', 'server' ]);
 
     // Client-side collections

@@ -1,5 +1,3 @@
-import { MeasurementApi } from 'meteor/lesiontracker/client/api/measurement';
-
 Template.lesionTable.onCreated(() => {
     const instance = Template.instance();
 
@@ -48,8 +46,10 @@ Template.lesionTable.onRendered(() => {
 Session.setDefault('NewSeriesLoaded', false);
 
 Template.lesionTable.onRendered(() => {
+    const instance = Template.instance();
+
     // Find the first measurement by Lesion Number
-    const firstLesion = MeasurementApi.firstLesion();
+    const firstLesion = instance.data.measurementApi.firstLesion();
 
     // Create an object to store the ContentId inside
     const templateData = {

@@ -154,7 +154,7 @@ function viewStudies() {
     // Generate a unique ID to represent this tab
     // We can't just use the Mongo entry ID because
     // then it will change after hot-reloading.
-    var contentid = uuid.new();
+    var contentid = Random.id();
 
     // Create a new entry in the WorklistTabs Collection
     WorklistTabs.insert({

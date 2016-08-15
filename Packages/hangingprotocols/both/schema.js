@@ -42,7 +42,7 @@ HP.Protocol = class Protocol {
      */
     constructor(name) {
         // Create a new UUID for this Protocol
-        this.id = uuid.new();
+        this.id = Random.id();
 
         // Store a value which determines whether or not a Protocol is locked
         // This is probably temporary, since we will eventually have role / user
@@ -131,7 +131,7 @@ HP.Protocol = class Protocol {
     fromObject(input) {
         // Check if the input already has an ID
         // If so, keep it. It not, create a new UUID
-        this.id = input.id || uuid.new();
+        this.id = input.id || Random.id();
 
         // Assign the input name to the Protocol
         this.name = input.name;
@@ -304,7 +304,7 @@ class Rule {
      */
     constructor(attribute, constraint, required, weight) {
         // Create a new UUID for this Rule
-        this.id = uuid.new();
+        this.id = Random.id();
 
         // Set the Rule's weight (defaults to 1)
         this.weight = weight || 1;
@@ -337,7 +337,7 @@ class Rule {
     fromObject(input) {
         // Check if the input already has an ID
         // If so, keep it. It not, create a new UUID
-        this.id = input.id || uuid.new();
+        this.id = input.id || Random.id();
 
         // Assign the specified input data to the Rule
         this.required = input.required;
@@ -365,7 +365,7 @@ HP.ProtocolMatchingRule = class ProtocolMatchingRule extends Rule {};
 HP.Stage = class Stage {
     constructor(ViewportStructure, name) {
         // Create a new UUID for this Stage
-        this.id = uuid.new();
+        this.id = Random.id();
 
         // Assign the name and ViewportStructure provided
         this.name = name;
@@ -417,7 +417,7 @@ HP.Stage = class Stage {
     fromObject(input) {
         // Check if the input already has an ID
         // If so, keep it. It not, create a new UUID
-        this.id = input.id || uuid.new();
+        this.id = input.id || Random.id();
 
         // Assign the input name to the Stage
         this.name = input.name;

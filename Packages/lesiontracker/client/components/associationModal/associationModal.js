@@ -53,7 +53,7 @@ Template.associationModal.events({
 
             // Create an array of all the studyDates for storage in the Timepoint
             var studyDates = relatedStudies.map(function(study) {
-                return moment(study.studyDate, 'YYYYMMDD');
+                return moment(study.studyDate).toDate();
             });
 
             // Sort the study dates, so we can get a range for these values
@@ -100,11 +100,11 @@ Template.associationModal.events({
                 // Create a new timepoint to represent the (baseline or follow-up) studies
                 var timepoint = {
                     timepointType: timepointType,
-                    timepointId: uuid.new(),
+                    timepointId: Random.id(),
                     studyInstanceUids: studyInstanceUids,
                     patientId: relatedStudies[0].patientId,
-                    earliestDate: studyDates[0].format('YYYYMMDD'),
-                    latestDate: studyDates[studyDates.length - 1].format('YYYYMMDD')
+                    earliestDate: studyDates[0],
+                    latestDate: studyDates[studyDates.length - 1]
                 };
 
                 // Insert this timepoint into the Timepoints Collection

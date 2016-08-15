@@ -1,6 +1,10 @@
 import { SimpleSchema } from 'meteor/aldeed:simple-schema';
 
 export const schema = new SimpleSchema({
+    patientId: {
+        type: String,
+        label: 'Patient ID',
+    },
     measurableDisease: {
         type: String,
         label: 'Measurable disease',

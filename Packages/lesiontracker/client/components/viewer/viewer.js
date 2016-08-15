@@ -91,14 +91,14 @@ Template.viewer.onCreated(() => {
             timepointAutoCheck(dataContext);
 
             // Wait until the Timepoint subscription is ready to initialize the TimepointApi
-            instance.data.timepointApi = new TimepointApi();
-            instance.data.timepointApi.currentTimepointId = instance.data.currentTimepointId;
+            instance.data.timepointApi = new TimepointApi(instance.data.currentTimepointId);
+            instance.data.measurementApi = new MeasurementApi(instance.data.currentTimepointId);
 
             // Provide the necessary data to the Measurement API
-            MeasurementApi.currentTimepointId = instance.data.currentTimepointId;
+            instance.data.measurementApi.currentTimepointId = instance.data.currentTimepointId;
             const prior = instance.data.timepointApi.prior();
             if (prior) {
-                MeasurementApi.priorTimepointId = prior.timepointId;
+                instance.data.measurementApi.priorTimepointId = prior.timepointId;
             }
 
             TrialResponseCriteria.validateAllDelayed();

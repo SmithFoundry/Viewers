@@ -20,7 +20,7 @@ class ServersControl {
         }
     }
 
-    static writeCallback(error, affected) {
+    static writeCallback(error) {
         if (error) {
             throw new Meteor.Error('data-write', error);
         }

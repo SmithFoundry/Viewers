@@ -50,8 +50,8 @@
                                       name="{{../_id}}"
                                       value="{{value}}"
                                       class="timepointOption"
-                                      {{ valueIf checked 'checked' }}
-                                      {{ valueIf autoselected 'disabled' }}>
+                                      {{ valueIf checked 'checked' ''}}
+                                      {{ valueIf autoselected 'disabled' ''}}>
                                     {{name}}
                             </label>
                         {{ /each }}

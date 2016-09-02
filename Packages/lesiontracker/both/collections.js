@@ -5,10 +5,7 @@ import { schema as MeasurementSchema } from 'meteor/lesiontracker/both/schema/me
 import { schema as ImageMeasurementSchema } from 'meteor/lesiontracker/both/schema/imageMeasurements';
 import { schema as AdditionalFindingsSchema } from 'meteor/lesiontracker/both/schema/additionalFindings';
 import { schema as ReviewerSchema } from 'meteor/lesiontracker/both/schema/reviewers';
-import { Servers as ServerSchema } from 'meteor/worklist/both/schema';
-
-// Servers describe the DICOM servers configurations
-Servers = new Mongo.Collection('servers');
+import { Servers as ServerSchema } from 'meteor/lesiontracker/both/schema/servers';
 
 Timepoints = new Mongo.Collection('timepoints');
 Timepoints.attachSchema(TimepointSchema);
@@ -34,6 +31,7 @@ AdditionalFindings.attachSchema(AdditionalFindingsSchema);
 Reviewers = new Mongo.Collection('reviewers');
 Reviewers.attachSchema(ReviewerSchema);
 
+// Servers describe the DICOM servers configurations
 Servers = new Mongo.Collection('servers');
 // TODO: Make the Schema match what we are currently sticking into the Collection
 //Servers.attachSchema(ServerSchema);

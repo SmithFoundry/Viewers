@@ -189,7 +189,6 @@ Package.onUse(function(api) {
         'lib/helpers/jsDateFromNow.js',
         'lib/helpers/formatNumberPrecision.js',
         'lib/helpers/formatTM.js',
-        'lib/helpers/inlineIf.js',
         'lib/helpers/inc.js',
         'lib/helpers/isDisplaySetActive.js',
         'lib/helpers/getUsername.js',

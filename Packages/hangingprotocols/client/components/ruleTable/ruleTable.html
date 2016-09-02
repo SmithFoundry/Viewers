@@ -18,7 +18,7 @@
                 {{ #unless rulePassed }}<small class="failWarning">Fail</small>{{ /unless }}
             </td>
             <td><input class="ruleWeight" type="number" value={{weight}} min="1" step="1" max="1000"/></td>
-            <td><input class="ruleRequired" type="checkbox" {{inlineIf required true "checked"}}/></td>
+            <td><input class="ruleRequired" type="checkbox" {{valueIf required "checked" ''}}/></td>
         </tr>
         {{ /if }}
         {{ /each }}

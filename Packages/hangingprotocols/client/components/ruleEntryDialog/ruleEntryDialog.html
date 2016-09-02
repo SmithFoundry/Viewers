@@ -34,7 +34,7 @@
                     {{ /if }}
 
                     {{ #if ifTypeIs currentValue "boolean"}}
-                    <input class='currentValue' type="checkbox" {{inlineIf currentValue true "selected"}}>
+                    <input class='currentValue' type="checkbox" {{valueIf currentValue "selected" ''}}>
                     {{ /if }}
                 </div>
             </div>

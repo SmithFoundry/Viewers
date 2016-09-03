@@ -1,0 +1,19 @@
+<template name="studylist">
+    <div id="studylistTabs" class="tab-content">
+        <div role="tabpanel" class="tab-pane active" id="studylistTab">
+            <div class="studylistContainer">
+                {{> studylistResult }}
+            </div>
+        </div>
+        <div role="tabpanel" class="tab-pane" id="viewerTab">
+            <div class="viewerContainer">
+            </div>
+        </div>
+        {{>loadingText}}
+    </div>
+    {{#each additionalTemplates}}
+        {{> UI.dynamic template=this}}
+    {{/each}}
+    {{>studyContextMenu }}
+    {{>progressDialog}}
+</template>

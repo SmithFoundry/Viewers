@@ -1,0 +1,17 @@
+<template name="measurementTable">
+    <div id="measurementTableContainer">
+        {{#if this.timepoints.get.length}}
+            <div class="measurementTableLayoutChanger viewerRoundedButtonGroup">
+                {{>roundedButtonGroup buttonGroupData}}
+            </div>
+            <div class="measurementTableTimepointHeaderRow">
+                {{#each this.timepoints.get}}
+                    {{>measurementTableTimepointHeader}}
+                {{/each}}
+            </div>
+            {{>measurementTableView (clone this)}}
+        {{else}}
+            <h3 class="p-x-1 text-center">No associated timepoint</h3>
+        {{/if}}
+    </div>
+</template>

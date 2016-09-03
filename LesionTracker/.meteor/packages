@@ -17,6 +17,8 @@ tracker@1.1.0                 # Meteor's client-side reactive programming librar
 es5-shim@4.6.14               # ECMAScript 5 compatibility for older browsers.
 ecmascript@0.5.8              # Enable ECMAScript2015+ syntax in app code
 
+insecure
+
 clinical:router
 clinical:extended-api
 clinical:active-entry
@@ -28,14 +30,18 @@ clinical:hipaa-logger
 
 aldeed:simple-schema          # Third party package to deal with schemas
 
+# OHIF Packages
 design
 ohif:core
+ohif:cornerstone
+ohif:viewerbase
+ohif:study-list
+ohif:dicom-services
+ohif:hanging-protocols
+ohif:user-management
+ohif:measurements
+ohif:lesiontracker
 
-insecure@1.0.7                # Allow all DB writes from clients (for prototyping)
-cornerstone
-worklist
-viewerbase
-dicomweb
 accounts-base@1.2.11
 accounts-password@1.3.0
 
@@ -49,7 +55,6 @@ fortawesome:fontawesome
 random@1.0.10
 reactive-var@1.0.10
 reactive-dict@1.1.8
-lesiontracker
 practicalmeteor:loglevel
 momentjs:moment
 
@@ -61,7 +66,6 @@ gilbertwat:bootstrap3-daterangepicker
 email@1.1.17
 peppelg:bootstrap-3-modal
 simple:reactive-method
-hangingprotocols
 fastclick@1.0.12
 standard-minifier-css@1.2.0
 standard-minifier-js@1.2.0

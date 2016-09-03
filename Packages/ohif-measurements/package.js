@@ -33,6 +33,8 @@ Package.onUse(function(api) {
 
     api.addFiles('log.js', [ 'client', 'server' ]);
 
+    api.addFiles('both/schema/schema.js', ['client', 'server']);
+
     api.addFiles('client/components/measurementTableView/measurementTableView.html', 'client');
     api.addFiles('client/components/measurementTableView/measurementTableView.styl', 'client');
     api.addFiles('client/components/measurementTableView/measurementTableView.js', 'client');

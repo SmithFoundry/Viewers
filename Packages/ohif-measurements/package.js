@@ -33,7 +33,11 @@ Package.onUse(function(api) {
 
     api.addFiles('log.js', [ 'client', 'server' ]);
 
+    api.addFiles('client/api/measurement.js');
+
     api.addFiles('both/schema/schema.js', ['client', 'server']);
+    api.addFiles('both/configuration.js', ['client', 'server']);
+    api.addFiles('server/parseConfiguration.js', ['server']);
 
     api.addFiles('client/components/measurementTableView/measurementTableView.html', 'client');
     api.addFiles('client/components/measurementTableView/measurementTableView.styl', 'client');
@@ -62,4 +66,6 @@ Package.onUse(function(api) {
     api.addFiles('client/components/measurementTableTimepointHeader/measurementTableTimepointHeader.html', 'client');
     api.addFiles('client/components/measurementTableTimepointHeader/measurementTableTimepointHeader.styl', 'client');
     api.addFiles('client/components/measurementTableTimepointHeader/measurementTableTimepointHeader.js', 'client');
+
+    api.export('MeasurementSchemaTypes', ['client', 'server']);
 });

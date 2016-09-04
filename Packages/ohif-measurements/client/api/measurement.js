@@ -1,8 +1,13 @@
+import { Meteor } from 'meteor/meteor';
+import { Mongo } from 'meteor/mongo';
+
 import { MeasurementsConfiguration } from '../../both/configuration';
 
 Meteor.startup(() => {
     const config = MeasurementsConfiguration.getConfiguration();
-    const toolIds = config.measurementTools.map(tool => { return tool.id });
+    const measurementTypeIds = config.measurementTools.map(tool => {
+        return tool.id
+    });
 
     class MeasurementApi {
         retrieveMeasurements() {
@@ -27,15 +32,13 @@ Meteor.startup(() => {
         }
     }
 
-    MeasurementApi.prototype.get = {};
-
     measurementTypeIds.forEach(measurementTypeId => {
         MeasurementApi.prototype[measurementTypeId] = new Mongo.Collection(null);
 
-        MeasurementApi.prototype.get[measurementTypeId] = (body) => {
+        MeasurementApi.prototype.get = (measurementTypeId) => {
             return this[measurementTypeId].find({}).fetch();
         }
     });
 
-    console.log(MeasurementApi);
+    console.log(Object.keys(MeasurementApi.prototype));
 });

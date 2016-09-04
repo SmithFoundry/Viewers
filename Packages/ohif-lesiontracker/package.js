@@ -34,6 +34,15 @@ Package.onUse(function(api) {
 
     api.addFiles('log.js', [ 'client', 'server' ]);
 
+    api.addFiles('both/configuration/bidirectional.js', [ 'client', 'server' ]);
+    api.addFiles('both/configuration/nonTarget.js', [ 'client', 'server' ]);
+    api.addFiles('both/configuration/ellipse.js', [ 'client', 'server' ]);
+    api.addFiles('both/configuration/length.js', [ 'client', 'server' ]);
+
+    api.addFiles('both/configuration/dataExchange.js', [ 'client', 'server' ]);
+    api.addFiles('both/configuration/dataValidation.js', [ 'client', 'server' ]);
+    api.addFiles('both/configuration/configuration.js', [ 'client', 'server' ]);
+
     // Schema
     api.addFiles('both/schema/timepoints.js', [ 'client', 'server' ]);
     api.addFiles('both/schema/studies.js', [ 'client', 'server' ]);
@@ -75,13 +84,13 @@ Package.onUse(function(api) {
     api.addFiles('client/components/toolbarSection/toolbarSection.styl', 'client');
     api.addFiles('client/components/toolbarSection/toolbarSection.js', 'client');
 
-    api.addFiles('client/components/radialProgressBar/radialProgressBar.html', 'client');
-    api.addFiles('client/components/radialProgressBar/radialProgressBar.styl', 'client');
-    api.addFiles('client/components/radialProgressBar/radialProgressBar.js', 'client');
-
     api.addFiles('client/components/caseProgress/caseProgress.html', 'client');
     api.addFiles('client/components/caseProgress/caseProgress.styl', 'client');
     api.addFiles('client/components/caseProgress/caseProgress.js', 'client');
+
+    api.addFiles('client/components/caseProgress/radialProgressBar/radialProgressBar.html', 'client');
+    api.addFiles('client/components/caseProgress/radialProgressBar/radialProgressBar.styl', 'client');
+    api.addFiles('client/components/caseProgress/radialProgressBar/radialProgressBar.js', 'client');
 
     api.addFiles('client/components/lesionTracker/lesionTracker.html', 'client');
     api.addFiles('client/components/lesionTracker/lesionTracker.styl', 'client');
@@ -95,12 +104,16 @@ Package.onUse(function(api) {
     api.addFiles('client/components/associationModal/associationModal.styl', 'client');
     api.addFiles('client/components/associationModal/associationModal.js', 'client');
 
+    api.addFiles('client/components/associationModal/studyAssociationTable/studyAssociationTable.html', 'client');
+    api.addFiles('client/components/associationModal/studyAssociationTable/studyAssociationTable.styl', 'client');
+    api.addFiles('client/components/associationModal/studyAssociationTable/studyAssociationTable.js', 'client');
+
     api.addFiles('client/components/optionsModal/optionsModal.html', 'client');
     api.addFiles('client/components/optionsModal/optionsModal.styl', 'client');
     api.addFiles('client/components/optionsModal/optionsModal.js', 'client');
 
-    api.addFiles('client/components/recistDescription/recistDescription.html', 'client');
-    api.addFiles('client/components/irRCDescription/irRCDescription.html', 'client');
+    api.addFiles('client/components/optionsModal/recistDescription/recistDescription.html', 'client');
+    api.addFiles('client/components/optionsModal/irRCDescription/irRCDescription.html', 'client');
 
     api.addFiles('client/components/lesionLocationDialog/lesionLocationDialog.html', 'client');
     api.addFiles('client/components/lesionLocationDialog/lesionLocationDialog.js', 'client');
@@ -109,10 +122,6 @@ Package.onUse(function(api) {
     api.addFiles('client/components/nonTargetLesionDialog/nonTargetLesionDialog.html', 'client');
     api.addFiles('client/components/nonTargetLesionDialog/nonTargetLesionDialog.styl', 'client');
     api.addFiles('client/components/nonTargetLesionDialog/nonTargetLesionDialog.js', 'client');
-
-    api.addFiles('client/components/studyAssociationTable/studyAssociationTable.html', 'client');
-    api.addFiles('client/components/studyAssociationTable/studyAssociationTable.styl', 'client');
-    api.addFiles('client/components/studyAssociationTable/studyAssociationTable.js', 'client');
 
     api.addFiles('client/components/conformanceCheckFeedback/conformanceCheckFeedback.html', 'client');
     api.addFiles('client/components/conformanceCheckFeedback/conformanceCheckFeedback.styl', 'client');
@@ -185,7 +194,6 @@ Package.onUse(function(api) {
 
     // API classes
     api.addFiles('client/api/timepoint.js');
-    api.addFiles('client/api/measurement.js');
 
     // Export global functions
     api.export('pixelSpacingAutorunCheck', 'client');
@@ -233,4 +241,6 @@ Package.onUse(function(api) {
 
     // Export utility classes
     api.export('FormUtils', 'client');
+
+    api.export('Configuration', ['client', 'server']);
 });

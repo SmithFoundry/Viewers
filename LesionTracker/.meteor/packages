@@ -39,7 +39,6 @@ ohif:study-list
 ohif:dicom-services
 ohif:hanging-protocols
 ohif:user-management
-ohif:measurements
 ohif:lesiontracker
 
 accounts-base@1.2.11

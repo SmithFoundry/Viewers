@@ -1,9 +1,13 @@
 import { SimpleSchema } from 'meteor/aldeed:simple-schema';
 
-export const Measurement = new SimpleSchema({
+const Measurement = new SimpleSchema({
     userId: {
         type: String,
         label: "User ID"
+    },
+    patientId: {
+        type: String,
+        label: "Patient ID"
     },
     // Force value to be current date (on server) upon insert
     // and prevent updates thereafter.
@@ -35,28 +39,28 @@ export const Measurement = new SimpleSchema({
     },
 })
 
-export const StudyLevelMeasurement = new SimpleSchema([Measurement, {
+const StudyLevelMeasurement = new SimpleSchema([Measurement, {
     studyInstanceUid: {
         type: String,
         label: 'Study Instance UID'
     }
 }]);
 
-export const SeriesLevelMeasurement = new SimpleSchema([StudyLevelMeasurement, {
+const SeriesLevelMeasurement = new SimpleSchema([StudyLevelMeasurement, {
     seriesInstanceUid: {
         type: String,
         label: 'Series Instance UID'
     }
 }]);
 
-export const InstanceLevelMeasurement = new SimpleSchema([StudyLevelMeasurement, SeriesLevelMeasurement, {
+const InstanceLevelMeasurement = new SimpleSchema([StudyLevelMeasurement, SeriesLevelMeasurement, {
     sopInstanceUid: {
         type: String,
         label: 'SOP Instance UID'
     }
 }]);
 
-export const FrameLevelMeasurement = new SimpleSchema([StudyLevelMeasurement, SeriesLevelMeasurement, InstanceLevelMeasurement, {
+const FrameLevelMeasurement = new SimpleSchema([StudyLevelMeasurement, SeriesLevelMeasurement, InstanceLevelMeasurement, {
     frameIndex: {
         type: Number,
         min: 0,
@@ -64,7 +68,7 @@ export const FrameLevelMeasurement = new SimpleSchema([StudyLevelMeasurement, Se
     },
 }]);
 
-export const CornerstoneToolMeasurement = new SimpleSchema([StudyLevelMeasurement,
+const CornerstoneToolMeasurement = new SimpleSchema([StudyLevelMeasurement,
                                                             SeriesLevelMeasurement,
                                                             InstanceLevelMeasurement,
                                                             FrameLevelMeasurement, {
@@ -72,22 +76,79 @@ export const CornerstoneToolMeasurement = new SimpleSchema([StudyLevelMeasuremen
         type: String,
         label: 'Cornerstone Tool Type'
     },
-}]);
-
-const BidirectionalSchema = new SimpleSchema([FrameLevelMeasurement, {
-    test: {
-        type: String,
-        label: 'A string label'
+    visible: {
+        type: Boolean,
+        label: 'Visible',
+        defaultValue: true
+    },
+    active: {
+        type: Boolean,
+        label: 'Active',
+        defaultValue: false
+    },
+    invalidated: {
+        type: Boolean,
+        label: 'Invalidated',
+        defaultValue: false,
+        optional: true
     }
 }]);
 
-const bidirectionalMeasurementType = {
-    id: 'bidirectional',
-    name: 'Target',
-    cornerstoneToolType: 'bidirectional',
-    schema: BidirectionalSchema
-}
+const CornerstoneHandleSchema = new SimpleSchema({
+    x: {
+        type: Number,
+        label: 'X'
+    },
+    y: {
+        type: Number,
+        label: 'Y'
+    },
+    highlight: {
+        type: Boolean,
+        label: 'Highlight',
+        defaultValue: false
+    },
+    active: {
+        type: Boolean,
+        label: 'Active',
+        defaultValue: false
+    },
+    drawnIndependently: {
+        type: Boolean,
+        label: 'Drawn Independently',
+        defaultValue: false,
+        optional: true
+    },
+    movesIndependently: {
+        type: Boolean,
+        label: 'Moves Independently',
+        defaultValue: false,
+        optional: true
+    },
+    allowedOutsideImage: {
+        type: Boolean,
+        label: 'Allowed Outside Image',
+        defaultValue: false,
+        optional: true
+    },
+    hasBoundingBox: {
+        type: Boolean,
+        label: 'Has Bounding Box',
+        defaultValue: false,
+        optional: true
+    }, 
+    index: { // TODO: Remove 'index' from bidirectionalTool since it's useless
+        type: Number,
+        optional: true
+    }, 
+});
 
-console.log(bidirectionalMeasurementType);
-console.log(BidirectionalSchema);
-//Measurements.types.push(bidirectionalMeasurementType);
+export const MeasurementSchemaTypes = {
+    Measurement: Measurement,
+    StudyLevelMeasurement: StudyLevelMeasurement,
+    SeriesLevelMeasurement: SeriesLevelMeasurement,
+    InstanceLevelMeasurement: InstanceLevelMeasurement,
+    FrameLevelMeasurement: FrameLevelMeasurement,
+    CornerstoneToolMeasurement: CornerstoneToolMeasurement,
+    CornerstoneHandleSchema: CornerstoneHandleSchema
+};

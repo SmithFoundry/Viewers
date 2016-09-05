@@ -13,20 +13,19 @@ measurementValuesByType = {
         'mean',
         'stdev'
     ]
-
 };
 
 /**
  * Update the Timepoint object for a specific Measurement.
  * If no measurement exists yet, one will be created.
  *
- * Input is toolData from the lesion or nonTarget tool
+ * Input is toolData from the Cornerstone tool
  *
- * @param lesionData
+ * @param measurementData
  */
-function updateLesionData(lesionData) {
+function updateLesionData(measurementData) {
     var study = Studies.findOne({
-        studyInstanceUid: lesionData.studyInstanceUid
+        studyInstanceUid: measurementData.studyInstanceUid
     });
 
     if (!study) {
@@ -45,35 +44,35 @@ function updateLesionData(lesionData) {
 
     // Find the specific lesion to be updated
     var existingMeasurement;
-    if (lesionData.id && lesionData.id !== 'notready') {
-        existingMeasurement = Measurements.findOne(lesionData.id);
+    if (measurementData.id && measurementData.id !== 'notready') {
+        existingMeasurement = Measurements.findOne(measurementData.id);
     } else {
         existingMeasurement = Measurements.findOne({
-            lesionNumber: lesionData.lesionNumber,
-            isTarget: lesionData.isTarget
+            lesionNumber: measurementData.lesionNumber,
+            isTarget: measurementData.isTarget
         });
     }
 
     // Create a structure for the timepointData based
     // on this Lesion's toolData
     var timepointData = {
-        seriesInstanceUid: lesionData.seriesInstanceUid,
-        studyInstanceUid: lesionData.studyInstanceUid,
-        sopInstanceUid: lesionData.sopInstanceUid,
-        handles: lesionData.handles,
-        imageId: lesionData.imageId
+        seriesInstanceUid: measurementData.seriesInstanceUid,
+        studyInstanceUid: measurementData.studyInstanceUid,
+        sopInstanceUid: measurementData.sopInstanceUid,
+        handles: measurementData.handles,
+        imageId: measurementData.imageId
     };
 
-    if (!lesionData.toolType) {
+    if (!measurementData.toolType) {
         // For debugging, might want to switch to measurement types later
-        lesionData.toolType = lesionData.isTarget ? 'bidirectional' : 'nonTarget';
+        measurementData.toolType = measurementData.isTarget ? 'bidirectional' : 'nonTarget';
     }
 
     // Populate this timepoint's data with whichever values
     // are stored for this Measurement type
-    var values = measurementValuesByType[lesionData.toolType];
+    var values = measurementValuesByType[measurementData.toolType];
     values.forEach(function(valueName) {
-        timepointData[valueName] = lesionData[valueName];
+        timepointData[valueName] = measurementData[valueName];
     });
 
     // If no such lesion exists, we need to add one
@@ -81,20 +80,20 @@ function updateLesionData(lesionData) {
         // Create a data structure for the Measurement
         // based on the current tool data
         var measurement = {
-            lesionNumber: lesionData.lesionNumber,
-            isTarget: lesionData.isTarget,
-            patientId: lesionData.patientId,
-            id: lesionData.id || Random.id(),
-            toolType: lesionData.toolType
+            lesionNumber: measurementData.lesionNumber,
+            isTarget: measurementData.isTarget,
+            patientId: measurementData.patientId,
+            id: measurementData.id || Random.id(),
+            toolType: measurementData.toolType
         };
-        if (lesionData.toolType) {
-            measurement.toolType = lesionData.toolType;
+        if (measurementData.toolType) {
+            measurement.toolType = measurementData.toolType;
         }
 
         // Retrieve the location name given the locationUID
-        if (lesionData.locationUID !== undefined) {
+        if (measurementData.locationUID !== undefined) {
             var locationObj = LesionLocations.findOne({
-                locationUID: lesionData.locationUID
+                locationUID: measurementData.locationUID
             });
 
             measurement.location = locationObj.location;
@@ -116,8 +115,8 @@ function updateLesionData(lesionData) {
         log.info('LesionManager inserting Measurement');
         measurement.id = Measurements.insert(measurement);
     } else {
-        lesionData.id = existingMeasurement._id;
-        lesionData.isNodal = existingMeasurement.isNodal;
+        measurementData.id = existingMeasurement._id;
+        measurementData.isNodal = existingMeasurement.isNodal;
 
         if (_.isEqual(existingMeasurement.timepoints[timepoint.timepointId], timepointData)) {
             return;
@@ -187,13 +186,13 @@ function getNewLesionNumber(timepointId, isTarget) {
 /**
  * If the current Lesion Number already exists
  * for any other timepoint, returns lesion locationUID
- * @param lesionData
+ * @param measurementData
  * @returns {*}
  */
-function lesionNumberExists(lesionData) {
+function lesionNumberExists(measurementData) {
     var measurement = Measurements.findOne({
-        lesionNumber: lesionData.lesionNumber,
-        isTarget: lesionData.isTarget
+        lesionNumber: measurementData.lesionNumber,
+        isTarget: measurementData.isTarget
     });
 
     if (!measurement) {

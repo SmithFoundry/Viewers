@@ -1,6 +1,8 @@
 import { OHIF } from 'meteor/ohif:core';
 import { TimepointApi } from 'meteor/ohif:lesiontracker/client/api/timepoint';
-import { MeasurementApi } from 'meteor/ohif:lesiontracker/client/api/measurement';
+import { MeasurementsConfiguration } from 'meteor/ohif:measurements/both/configuration';
+
+const MeasurementApi = MeasurementsConfiguration.getMeasurementsApi();
 
 OHIF.viewer = OHIF.viewer || {};
 OHIF.viewer.loadIndicatorDelay = 3000;

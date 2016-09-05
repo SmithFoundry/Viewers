@@ -42,8 +42,10 @@ const BidirectionalSchema = new SimpleSchema([MeasurementSchemaTypes.Cornerstone
 }]);
 
 export const bidirectional = {
-    id: 'bidirectional',
-    name: 'Target',
+    id: 'targets',
+    name: 'Targets',
     cornerstoneToolType: 'bidirectional',
+    showInMeasurementTable: true,
+    includeInCaseProgress: true,
     schema: BidirectionalSchema
 }

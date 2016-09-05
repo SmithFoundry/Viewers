@@ -8,17 +8,17 @@
         </div>
         {{ /if }}
         <div class="type">
-            {{type}}
+            {{measurementType.name}}
         </div>
-        <div class="max {{ # if gt numberOfLesions maxNumLesions }}warning{{/if}}">
-        {{ #if maxNumLesions }}
-            <p class="maxNumLesions">
-                Max {{maxNumLesions}}
+        <div class="max {{ # if gt numberOfMeasurements maxNumMeasurements }}warning{{/if}}">
+        {{ #if maxNumMeasurements }}
+            <p class="maxNumMeasurements">
+                Max {{maxNumMeasurements}}
             </p>
         {{/if}}
         </div>
-        <div class="numberOfLesions">
-            {{numberOfLesions}}
+        <div class="numberOfMeasurements">
+            {{numberOfMeasurements}}
         </div>
     </div>
 </template>

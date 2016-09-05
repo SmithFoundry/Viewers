@@ -8,7 +8,7 @@ import { validateMeasurements } from './dataValidation';
 
 import { MeasurementsConfiguration } from 'meteor/ohif:measurements/both/configuration';
 
-console.log('Setting Configuration!');
+console.log('OHIF-LesionTracker: Defining Configuration for Measurements');
 MeasurementsConfiguration.setConfiguration({
 	measurementTools: [
 		bidirectional,

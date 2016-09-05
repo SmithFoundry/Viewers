@@ -33,17 +33,6 @@
     }
 
     function createNewMeasurement(mouseEventData) {
-        var imageId = mouseEventData.image.imageId;
-
-        // Get studyInstanceUid
-        var study = cornerstoneTools.metaData.get('study', imageId);
-        var studyInstanceUid = study.studyInstanceUid;
-        var patientId = study.patientId;
-
-        // Get seriesInstanceUid
-        var series = cornerstoneTools.metaData.get('series', imageId);
-        var seriesInstanceUid = series.seriesInstanceUid;
-
         // Create the measurement data for this tool with the end handle activated
         var measurementData = {
             visible: true,
@@ -92,14 +81,9 @@
                     index: 3
                 }
             },
-            imageId: imageId,
-            seriesInstanceUid: seriesInstanceUid,
-            studyInstanceUid: studyInstanceUid,
-            patientId: patientId,
             longestDiameter: 0,
             shortestDiameter: 0,
             isDeleted: false,
-            isTarget: true,
             toolType: 'bidirectional'
         };
         return measurementData;

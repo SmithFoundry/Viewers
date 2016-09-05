@@ -97,10 +97,12 @@ const CornerstoneToolMeasurement = new SimpleSchema([StudyLevelMeasurement,
 const CornerstoneHandleSchema = new SimpleSchema({
     x: {
         type: Number,
+        decimal: true,
         label: 'X'
     },
     y: {
         type: Number,
+        decimal: true,
         label: 'Y'
     },
     highlight: {

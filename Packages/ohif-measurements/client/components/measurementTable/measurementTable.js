@@ -49,7 +49,7 @@ Template.measurementTable.onRendered(() => {
     const instance = Template.instance();
 
     // Find the first measurement by Lesion Number
-    const firstLesion = instance.data.measurementApi.firstLesion();
+    let firstLesion = undefined; // = instance.data.measurementApi.firstLesion();
 
     // Create an object to store the ContentId inside
     const templateData = {

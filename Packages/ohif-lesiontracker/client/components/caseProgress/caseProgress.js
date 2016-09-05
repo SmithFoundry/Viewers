@@ -1,3 +1,7 @@
+import { MeasurementsConfiguration } from 'meteor/ohif:measurements/both/configuration';
+
+const config = MeasurementsConfiguration.getConfiguration();
+
 Template.caseProgress.onCreated(() => {
     const instance = Template.instance();
 
@@ -24,7 +28,7 @@ Template.caseProgress.onCreated(() => {
     // follow-up. Note that this is done outside of the reactive function
     // below so that new lesions don't change the initial target count.
     const withPriors = true;
-    const totalTargets = instance.data.measurementApi.targets(withPriors).length;
+    const totalTargets = 10; //instance.data.measurementApi.targets(withPriors).length;
 
     // If we're currently reviewing a Baseline timepoint, don't do any
     // progress measurement.
@@ -36,7 +40,7 @@ Template.caseProgress.onCreated(() => {
         instance.autorun(() => {
             // Obtain the number of Measurements for which the current Timepoint has
             // no Measurement data
-            const numRemainingMeasurements = instance.data.measurementApi.unmarked().length;
+            const numRemainingMeasurements = 5; //instance.data.measurementApi.unmarked().length;
 
             // Update the Case Progress text with the remaining measurement count
             instance.progressText.set(numRemainingMeasurements);

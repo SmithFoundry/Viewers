@@ -10,7 +10,5 @@ handleMeasurementModified = function(e, eventData) {
 
     if (toolTypes.indexOf(measurementData.toolType) > -1) {
         log.info('CornerstoneToolsMeasurementModified');
-        //LesionManager.updateLesionData(measurementData);
-        //TrialResponseCriteria.validateDelayed(measurementData);
     }
 };

@@ -24,14 +24,15 @@ const NonTargetSchema = new SimpleSchema([MeasurementSchemaTypes.CornerstoneTool
         label: 'Handles'
     },
     response: {
-    	type: Number,
+    	type: String,
     	label: 'Response'
     }
 }]);
 
 export const nonTarget = {
-    id: 'nonTarget',
-    name: 'Non-Target',
+    id: 'nonTargets',
+    name: 'Non-Targets',
     cornerstoneToolType: 'nonTarget',
+    showInMeasurementTable: true,
     schema: NonTargetSchema
 }

@@ -248,6 +248,10 @@ HP.ProtocolEngine = class ProtocolEngine {
             // For each matched protocol, check if it is already in MatchedProtocols
             matched.forEach(function(matchedDetail) {
                 var protocol = matchedDetail.protocol;
+                if (!protocol) {
+                	return;
+                }
+
                 var protocolInCollection = MatchedProtocols.findOne({
                     id: protocol.id
                 });

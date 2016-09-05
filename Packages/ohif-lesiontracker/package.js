@@ -186,11 +186,10 @@ Package.onUse(function(api) {
 
     api.addFiles('lib/syncMeasurementAndToolData.js', 'client');
     api.addFiles('lib/syncImageMeasurementAndToolData.js', 'client');
-    api.addFiles('lib/updateRelatedElements.js', 'client');
 
-    api.addFiles('lib/handleMeasurementAdded.js', 'client');
-    api.addFiles('lib/handleMeasurementModified.js', 'client');
-    api.addFiles('lib/handleMeasurementRemoved.js', 'client');
+    api.addFiles('client/handleMeasurementAdded.js', 'client');
+    api.addFiles('client/handleMeasurementModified.js', 'client');
+    api.addFiles('client/handleMeasurementRemoved.js', 'client');
 
     // API classes
     api.addFiles('client/api/timepoint.js');
@@ -202,7 +201,6 @@ Package.onUse(function(api) {
     api.export('handleMeasurementRemoved', 'client');
     api.export('syncMeasurementAndToolData', 'client');
     api.export('syncImageMeasurementAndToolData', 'client');
-    api.export('updateRelatedElements', 'client');
     api.export('openNewTabWithTimepoint', 'client');
     api.export('activateLesion', 'client');
     api.export('activateMeasurements', 'client');

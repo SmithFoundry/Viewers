@@ -29,5 +29,6 @@ export const ellipse = {
     id: 'ellipse',
     name: 'Ellipse',
     cornerstoneToolType: 'ellipticalRoi',
+    showInMeasurementTable: false,
     schema: EllipseSchema
 }

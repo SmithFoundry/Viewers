@@ -29,5 +29,6 @@ export const length = {
     id: 'length',
     name: 'Length',
     cornerstoneToolType: 'length',
+    showInMeasurementTable: false,
     schema: LengthSchema
 }

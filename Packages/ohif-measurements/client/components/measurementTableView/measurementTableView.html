@@ -1,32 +1,22 @@
 <template name="measurementTableView">
     <div class="measurementTableView scrollArea">
-        {{>measurementTableHeaderRow id="target"
-                                measurements=targets
+        {{ #each measurementType in measurementTools}}
+            {{#if measurementType.showInMeasurementTable }}
+
+            {{#let collection=(measurementApiCollection measurementType.id)}}
+            {{>measurementTableHeaderRow measurementType=measurementType
+                                measurements=collection
                                 currentTimepointId=currentTimepointId
                                 timepointApi=timepointApi
                                 measurementApi=measurementApi}}
-        {{#each target in targets}}
-            {{>measurementTableRow (clone this rowItem=target)}}
-        {{/each}}
 
-        {{>measurementTableHeaderRow id="nonTarget"
-                                measurements=nonTargets
-                                currentTimepointId=currentTimepointId
-                                timepointApi=timepointApi
-                                measurementApi=measurementApi}}
-        {{#each nonTarget in nonTargets}}
-            {{>measurementTableRow (clone this rowItem=nonTarget)}}
-        {{/each}}
-
-        {{#if gt this.timepoints.get.length 1}}
-            {{>measurementTableHeaderRow id="newLesion"
-                                    measurements=newLesions
-                                    currentTimepointId=currentTimepointId
-                                    timepointApi=timepointApi
-                                    measurementApi=measurementApi}}
-            {{#each newLesion in newLesions}}
-                {{>measurementTableRow (clone this rowItem=newLesion)}}
+            {{#each entry in collection}}
+                {{>measurementTableRow (clone this rowItem=entry)}}
             {{/each}}
-        {{/if}}
+
+            {{/let}}
+
+            {{/if}}
+        {{ /each }}
     </div>
 </template>

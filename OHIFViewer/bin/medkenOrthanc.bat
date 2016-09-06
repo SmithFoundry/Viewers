@@ -1,2 +1,2 @@
-set PACKAGE_DIRS=..\Packages
-meteor --settings ../config/medkenOrthanc.json
+set PACKAGE_DIRS=..\..\Packages
+meteor --settings ../../config/medkenOrthanc.json

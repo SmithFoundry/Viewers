@@ -104,11 +104,10 @@ Template.toolbarSection.helpers({
         });
         
          buttonData.push({
-            id: 'freeHand',
+            id: 'length',
             title: 'Freehand',
             iconClasses: 'fa fa-hand-paper-o'
         });
-
 
         return buttonData;
     },

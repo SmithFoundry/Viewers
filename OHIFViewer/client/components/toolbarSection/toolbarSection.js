@@ -98,7 +98,7 @@ Template.toolbarSection.helpers({
         
             buttonData.push({
             id: 'length',
-            title: 'Length',
+            title: 'Freehand',
             classes: 'imageViewerTool toolbarSectionButton',
             iconClasses: 'fa fa-hand-paper-o'
         });

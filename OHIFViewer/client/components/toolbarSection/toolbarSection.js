@@ -102,6 +102,14 @@ Template.toolbarSection.helpers({
             iconClasses: 'fa fa-th-large',
             buttonTemplateName: 'layoutButton'
         });
+        
+         buttonData.push({
+            id: 'freeHand',
+            title: 'Freehand',
+            iconClasses: 'fa fa-hand-paper-o',
+            buttonTemplateName: 'freehandButton'
+        });
+
 
         return buttonData;
     },

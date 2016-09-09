@@ -106,8 +106,7 @@ Template.toolbarSection.helpers({
          buttonData.push({
             id: 'freeHand',
             title: 'Freehand',
-            iconClasses: 'fa fa-hand-paper-o',
-            buttonTemplateName: 'freehandButton'
+            iconClasses: 'fa fa-hand-paper-o'
         });
 
 

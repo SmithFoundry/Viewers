@@ -103,12 +103,14 @@ Template.toolbarSection.helpers({
             buttonTemplateName: 'layoutButton'
         });
         
+        /**
         buttonData.push({ 
         id: 'fh', 
         title: 'Freehand', 
         classes: 'imageViewerTool toolbarSectionButton', 
         iconClasses: 'fa fa-hand-paper-o' });
-
+       */
+       
         return buttonData;
     },
 

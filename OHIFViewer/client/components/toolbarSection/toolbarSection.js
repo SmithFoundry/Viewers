@@ -55,6 +55,13 @@ Template.toolbarSection.helpers({
         });
 
         buttonData.push({
+            id: 'length',
+            title: 'Length',
+            classes: 'imageViewerTool toolbarSectionButton',
+            svgLink: '/packages/viewerbase/assets/icons.svg#icon-tools-measure-temp'
+        });
+
+        buttonData.push({
             id: 'annotate',
             title: 'Annotate',
             classes: 'imageViewerTool',
@@ -94,13 +101,6 @@ Template.toolbarSection.helpers({
             title: 'Layout',
             iconClasses: 'fa fa-th-large',
             buttonTemplateName: 'layoutButton'
-        });
-        
-            buttonData.push({
-            id: 'length',
-            title: 'Freehand',
-            classes: 'imageViewerTool toolbarSectionButton',
-            iconClasses: 'fa fa-hand-paper-o'
         });
 
         return buttonData;
